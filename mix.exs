@@ -26,6 +26,7 @@ defmodule Stringly.MixProject do
   defp deps do
     [
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.31", only: :dev, runtime: false},
       {:styler, "~> 0.11", only: [:dev, :test], runtime: false}
     ]
   end
