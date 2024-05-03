@@ -37,7 +37,7 @@ defmodule Stringly.MixProject do
   defp package do
     [
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/muzhawir/bmkg_open_data"}
+      links: %{"GitHub" => "https://github.com/muzhawir/stringly"}
     ]
   end
 end
