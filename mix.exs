@@ -32,7 +32,7 @@ defmodule Stringly.MixProject do
   end
 
   defp description do
-    "Elixir package with a wide variety of string manipulation functions. Inspired by Laravel's Str helper, it enhances Elixir's built-in String module with additional practical tools."
+    "Stringly is an Elixir package packed with a wide range of string manipulation functions, it boosts Elixir's native `String` module with some extra handy tools."
   end
 
   defp package do
