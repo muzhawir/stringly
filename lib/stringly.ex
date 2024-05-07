@@ -2,29 +2,6 @@ defmodule Stringly do
   @moduledoc """
   Stringly is a wide variety of string manipulation functions.
   """
-  @spec remainder_after(String.t(), String.t()) :: String.t()
-  @doc """
-  Returns everything after the given value in a string.
-
-  The entire string will be returned if the value does not exist within the string.
-
-  ## Examples
-      iex> Stringly.remainder_after("Elixir is functional programming language", "is functional")
-      "programming language"
-
-      iex> Stringly.remainder_after("Elixir is functional programming language")
-      "Elixir is functional programming language"
-  """
-  def remainder_after(subject), do: subject
-
-  def remainder_after(subject, ""), do: subject
-
-  def remainder_after(subject, search) when search != "" do
-    case String.split(subject, search, parts: 2, trim: true) do
-      [_, remainder | _] -> String.trim(remainder)
-      _ -> ""
-    end
-  end
 
   @spec limit(String.t(), pos_integer(), String.t()) :: String.t()
   @spec limit(binary(), pos_integer()) :: binary()
@@ -48,6 +25,30 @@ defmodule Stringly do
       string
     else
       String.slice(string, 0, limit) <> tail
+    end
+  end
+
+  @spec remainder_after(String.t(), String.t()) :: String.t()
+  @doc """
+  Returns everything after the given value in a string.
+
+  The entire string will be returned if the value does not exist within the string.
+
+  ## Examples
+      iex> Stringly.remainder_after("Elixir is functional programming language", "is functional")
+      "programming language"
+
+      iex> Stringly.remainder_after("Elixir is functional programming language")
+      "Elixir is functional programming language"
+  """
+  def remainder_after(subject), do: subject
+
+  def remainder_after(subject, ""), do: subject
+
+  def remainder_after(subject, search) when search != "" do
+    case String.split(subject, search, parts: 2, trim: true) do
+      [_, remainder | _] -> String.trim(remainder)
+      _ -> ""
     end
   end
 

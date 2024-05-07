@@ -3,18 +3,6 @@ defmodule StringlyTest do
 
   doctest Stringly
 
-  describe "Stringly.remainder_after/2" do
-    test "return the remainder of a string after the first occurrence of a given value" do
-      assert Stringly.remainder_after("Elixir is functional programming language", "is functional") ===
-               "programming language"
-    end
-
-    test "return entire string if search argument value not exist" do
-      assert Stringly.remainder_after("Elixir is functional programming language") ===
-               "Elixir is functional programming language"
-    end
-  end
-
   describe "Stringly.limit/3" do
     test "returns the original string when no limit is provided and string is shorter than default limit" do
       assert Stringly.limit("Hello world") === "Hello world"
@@ -26,6 +14,18 @@ defmodule StringlyTest do
 
     test "appends a custom tail when the specified limit is reached" do
       assert Stringly.limit("Hello world", 5, ">>>") === "Hello>>>"
+    end
+  end
+
+  describe "Stringly.remainder_after/2" do
+    test "return the remainder of a string after the first occurrence of a given value" do
+      assert Stringly.remainder_after("Elixir is functional programming language", "is functional") ===
+               "programming language"
+    end
+
+    test "return entire string if search argument value not exist" do
+      assert Stringly.remainder_after("Elixir is functional programming language") ===
+               "Elixir is functional programming language"
     end
   end
 
