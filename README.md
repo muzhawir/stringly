@@ -9,7 +9,7 @@ You can find Stringly on Hex. Add `stringly` to your dependencies in `mix.exs` t
 ```elixir
 def deps do
   [
-    {:stringly, "~> 0.0.1"}
+    {:stringly, "~> 0.1.0"}
   ]
 end
 ```

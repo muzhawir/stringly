@@ -4,13 +4,12 @@ defmodule Stringly.MixProject do
   def project do
     [
       app: :stringly,
-      version: "0.0.1",
+      version: "0.1.0",
       elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,
       description: description(),
       package: package(),
       deps: deps(),
-      name: "Stringly",
       source_url: "https://github.com/muzhawir/stringly"
     ]
   end
@@ -38,7 +37,10 @@ defmodule Stringly.MixProject do
   defp package do
     [
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/muzhawir/stringly"}
+      links: %{
+        "GitHub" => "https://github.com/muzhawir/stringly",
+        "Changelog" => "https://github.com/muzhawir/stringly/blob/main/CHANGELOG.md"
+      }
     ]
   end
 end
