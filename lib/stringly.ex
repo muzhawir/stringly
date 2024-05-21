@@ -1,8 +1,9 @@
 defmodule Stringly do
   @moduledoc """
-  Stringly is a wide variety of string manipulation functions.
+  Stringly is an Elixir package packed with a wide range of string manipulation functions.
+  It boosts Elixir's native String module with some extra handy tools.
   """
-
+  @deprecated "Use Stringly.truncate_string/3 instead."
   @spec limit(String.t(), pos_integer(), String.t()) :: String.t()
   @doc """
   Limits the number of strings.
@@ -39,6 +40,7 @@ defmodule Stringly do
       iex> Stringly.remainder_after("Elixir is functional programming language")
       "Elixir is functional programming language"
   """
+  @deprecated "Use Stringly.substring_after/2 instead."
   def remainder_after(subject, search) when search != "" do
     case String.split(subject, search, parts: 2, trim: true) do
       [_, remainder | _] -> String.trim(remainder)
@@ -50,6 +52,7 @@ defmodule Stringly do
 
   def remainder_after(subject), do: subject
 
+  @spec slug(String.t(), :default | :downcase | :upcase, String.t(), String.t(), map()) :: String.t()
   @doc """
   Generates a URL friendly slug from the given string.
 
@@ -63,15 +66,16 @@ defmodule Stringly do
       iex> Stringly.slug("Post #1: Is Elixir A Functional Programming Language?", :upcase)
       "POST-1-IS-ELIXIR-A-FUNCTIONAL-PROGRAMMING-LANGUAGE"
   """
+  @deprecated "Use Stringly.generate_slug/3 instead."
   def slug(title, case_option \\ :default, separator \\ "-", language \\ "en", dictionary \\ %{"@" => "at"}) do
     import Stringly.Slug
 
     title
     |> normalize_title(language)
     |> replace_separator(separator)
-    |> replace_dictionary_words(dictionary, separator)
-    |> remove_invalid_characters(separator)
-    |> compress_separators(separator)
+    |> replace_dictionary_word(dictionary, separator)
+    |> remove_invalid_character(separator)
+    |> compress_separator(separator)
     |> String.trim(separator)
     |> handle_case(case_option)
   end
@@ -92,6 +96,7 @@ defmodule Stringly do
       iex> Stringly.words("Elixir is a functional programming language", 5, ">>>")
       "Elixir is a functional programming>>>"
   """
+  @deprecated "Use Stringly.truncate_word/3 instead."
   def words(string, limit \\ 100, tail \\ "...") do
     word_list = String.split(string)
 

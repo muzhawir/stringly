@@ -17,28 +17,28 @@ defmodule Stringly.Slug do
   def replace_separator(title, separator),
     do: Regex.replace(~r/[#{Regex.escape((separator == "-" && "_") || "-")}]+/u, title, separator)
 
-  @spec replace_dictionary_words(String.t(), map(), String.t()) :: String.t()
+  @spec replace_dictionary_word(String.t(), map(), String.t()) :: String.t()
   @doc """
   Replaces each key in the dictionary found in the title with its corresponding value, enclosed by the specified separator.
   """
-  def replace_dictionary_words(title, dictionary, separator) do
+  def replace_dictionary_word(title, dictionary, separator) do
     Enum.reduce(dictionary, title, fn {key, value}, acc ->
       String.replace(acc, key, "#{separator}#{value}#{separator}")
     end)
   end
 
-  @spec remove_invalid_characters(String.t(), String.t()) :: String.t()
+  @spec remove_invalid_character(String.t(), String.t()) :: String.t()
   @doc """
   Removes all characters from the title that are not letters, numbers, separators, or whitespace.
   """
-  def remove_invalid_characters(title, separator),
+  def remove_invalid_character(title, separator),
     do: Regex.replace(~r/[^#{Regex.escape(separator)}\p{L}\p{N}\s]/u, title, "")
 
-  @spec compress_separators(String.t(), String.t()) :: String.t()
+  @spec compress_separator(String.t(), String.t()) :: String.t()
   @doc """
   Compresses consecutive separators and whitespace in the title into a single instance of the specified separator.
   """
-  def compress_separators(title, separator), do: Regex.replace(~r/[#{Regex.escape(separator)}\s]+/u, title, separator)
+  def compress_separator(title, separator), do: Regex.replace(~r/[#{Regex.escape(separator)}\s]+/u, title, separator)
 
   @spec handle_case(String.t(), :default | :downcase | :upcase) :: String.t()
   @doc """
